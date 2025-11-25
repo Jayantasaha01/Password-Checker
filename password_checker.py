@@ -33,7 +33,7 @@ def score_password(pw: str):
         reasons.append("Avoid common or repeated patterns.")
         score = max(0, score-2)
 
-    # entropy-ish heuristic
+    # Grading scale of the password from 1 to 5
     if score >= 5:
         verdict = "Strong"
     elif score >= 3:
@@ -47,6 +47,7 @@ def main():
     if len(sys.argv) > 1:
         pw = sys.argv[1]
         out = score_password(pw)
+        print("Password Strength will be Scored from 0 to 5")
         print(f"Password: {out['password']}\nScore: {out['score']}\nVerdict: {out['verdict']}")
         if out['reasons']:
             print("Suggestions:")
